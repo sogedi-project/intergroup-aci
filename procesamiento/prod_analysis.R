@@ -86,7 +86,8 @@ sjPlot::tab_corr(M,
                  triangle = "lower")
 
 df <- rstatix::cor_test(M, method = "pearson", use = "pairwise.complete.obs") %>% 
-  mutate(p = gtools::stars.pval(p),
+  mutate(cor = round(cor, 2),
+    p = gtools::stars.pval(p),
          cor = paste0(cor,p)) %>% 
   select(var1, var2, cor) %>% 
   pivot_wider(id_cols = var1, 
@@ -533,13 +534,13 @@ c1  <- '
            '
 c2  <- '
 # Estimar los efectos constreñidos
-    cx2 ~ a*cx1 + f*cz1 + g*cy1 + sexindepx*sex + sexindepx*ess
-    cx3 ~ a*cx2 + f*cz2 + g*cy2 + sexindepx*sex + sexindepx*ess
-    cx4 ~ a*cx3 + f*cz3 + g*cy3 + sexindepx*sex + sexindepx*ess
+    cx2 ~ a*cx1 + f*cz1 + g*cy1 + sexindepx*sex + essindepx*ess
+    cx3 ~ a*cx2 + f*cz2 + g*cy2 + sexindepx*sex + essindepx*ess
+    cx4 ~ a*cx3 + f*cz3 + g*cy3 + sexindepx*sex + essindepx*ess
 
-    cz2 ~ b*cz1 + h*cx1 + i*cy1 + sexindepz*sex + sexindepz*ess
-    cz3 ~ b*cz2 + h*cx2 + i*cy2 + sexindepz*sex + sexindepz*ess
-    cz4 ~ b*cz3 + h*cx3 + i*cy3 + sexindepz*sex + sexindepz*ess
+    cz2 ~ b*cz1 + h*cx1 + i*cy1 + sexindepz*sex + essindepz*ess
+    cz3 ~ b*cz2 + h*cx2 + i*cy2 + sexindepz*sex + essindepz*ess
+    cz4 ~ b*cz3 + h*cx3 + i*cy3 + sexindepz*sex + essindepz*ess
 
     cy2 ~ c*cy1
     cy3 ~ c*cy2
@@ -565,13 +566,13 @@ d1  <- '
 
 d2  <- '
 # Estimar los efectos constreñidos
-    cx2 ~ a*cx1 + f*cz1 + g*cy1 + sexindepx*sex + sexindepx*ess
-    cx3 ~ a*cx2 + f*cz2 + g*cy2 + sexindepx*sex + sexindepx*ess
-    cx4 ~ a*cx3 + f*cz3 + g*cy3 + sexindepx*sex + sexindepx*ess
+    cx2 ~ a*cx1 + f*cz1 + g*cy1 + sexindepx*sex + essindepx*ess
+    cx3 ~ a*cx2 + f*cz2 + g*cy2 + sexindepx*sex + essindepx*ess
+    cx4 ~ a*cx3 + f*cz3 + g*cy3 + sexindepx*sex + essindepx*ess
 
-    cz2 ~ b*cz1 + h*cx1 + i*cy1 + sexindepz*sex + sexindepz*ess
-    cz3 ~ b*cz2 + h*cx2 + i*cy2 + sexindepz*sex + sexindepz*ess
-    cz4 ~ b*cz3 + h*cx3 + i*cy3 + sexindepz*sex + sexindepz*ess
+    cz2 ~ b*cz1 + h*cx1 + i*cy1 + sexindepz*sex + essindepz*ess
+    cz3 ~ b*cz2 + h*cx2 + i*cy2 + sexindepz*sex + essindepz*ess
+    cz4 ~ b*cz3 + h*cx3 + i*cy3 + sexindepz*sex + essindepz*ess
 
     cy2 ~ d*cx1 + e*cz1 + c*cy1 + sexdep*sex + essdep*ess
     cy3 ~ d*cx2 + e*cz2 + c*cy2 + sexdep*sex + essdep*ess
